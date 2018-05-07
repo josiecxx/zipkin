@@ -43,6 +43,7 @@ class ZipkinMySQLStorageAutoConfiguration {
   @Bean @ConditionalOnMissingBean(Executor.class) Executor executor() {
     ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
     executor.setThreadNamePrefix("ZipkinMySQLStorage-");
+    executor.setCorePoolSize(4);
     executor.initialize();
     return executor;
   }
